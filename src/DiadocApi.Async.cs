@@ -15,7 +15,6 @@ using Diadoc.Api.Proto.Invoicing;
 using Diadoc.Api.Proto.Invoicing.Signers;
 using Diadoc.Api.Proto.KeyValueStorage;
 using Diadoc.Api.Proto.Organizations;
-using Diadoc.Api.Proto.Recognition;
 using Diadoc.Api.Proto.Registration;
 using Diadoc.Api.Proto.Users;
 using JetBrains.Annotations;
@@ -547,18 +546,6 @@ namespace Diadoc.Api
 		{
 			if (string.IsNullOrEmpty(printFormId)) throw new ArgumentNullException("printFormId");
 			return diadocHttpApi.GetGeneratedPrintFormAsync(authToken, printFormId);
-		}
-
-		public Task<string> RecognizeAsync(string fileName, byte[] content)
-		{
-			if (string.IsNullOrEmpty(fileName)) throw new ArgumentNullException("fileName");
-			return diadocHttpApi.RecognizeAsync(fileName, content);
-		}
-
-		public Task<Recognized> GetRecognizedAsync(string recognitionId)
-		{
-			if (string.IsNullOrEmpty(recognitionId)) throw new ArgumentNullException("recognitionId");
-			return diadocHttpApi.GetRecognizedAsync(recognitionId);
 		}
 
 		public Task<DocumentList> GetDocumentsAsync(string authToken, string boxId, string filterCategory, string counteragentBoxId,
